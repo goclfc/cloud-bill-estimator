@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cloud Bill Estimator: Compare AWS, GCP, Azure, Vercel, Railway, Render & usectl Pricing</title>
+<meta name="description" content="Free cloud cost calculator. Compare monthly bills across AWS, GCP, Azure, Vercel, Railway, Render, and usectl. Real published prices, side by side, no signup. See which cloud is cheapest for your app.">
+<meta name="keywords" content="cloud pricing calculator, aws vs google cloud pricing, cloud cost comparison, vercel vs railway, render pricing, cloud bill estimator, hosting comparison, paas pricing, infrastructure cost calculator, cheap cloud hosting, flat rate hosting, usectl, gcp pricing">
+<meta name="author" content="usectl">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<meta name="googlebot" content="index, follow">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="canonical" href="https://usectl.com/tools/cloud-bill-estimator">
+
+<!-- google search console verification — replace VERIFICATION_CODE with your code from search.google.com/search-console -->
+<meta name="google-site-verification" content="VERIFICATION_CODE">
+
+<!-- google analytics 4 — replace G-XXXXXXXXXX with your measurement ID from analytics.google.com -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX', {
+    'anonymize_ip': true,
+    'cookie_flags': 'SameSite=None;Secure'
+  });
+</script>
+
+<!-- favicon: inline svg, matches usectl ~* brand mark -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2311A32A'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='15' font-weight='800' fill='white' text-anchor='middle' letter-spacing='-1'%3E~*%3C/text%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' rx='40' fill='%2311A32A'/%3E%3Ctext x='90' y='124' font-family='monospace' font-size='86' font-weight='800' fill='white' text-anchor='middle' letter-spacing='-6'%3E~*%3C/text%3E%3C/svg%3E">
+
+<!-- open graph -->
+<meta property="og:title" content="Cloud Bill Estimator: Compare 7 Cloud Providers">
+<meta property="og:description" content="See what your app actually costs on AWS, GCP, Azure, Vercel, Railway, Render, and usectl. Side by side, no signup.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://usectl.com/tools/cloud-bill-estimator">
+<meta property="og:site_name" content="usectl">
+<meta property="og:image" content="https://usectl.com/tools/cloud-bill-estimator/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- twitter card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@gochaberulava">
+<meta name="twitter:creator" content="@gochaberulava">
+<meta name="twitter:title" content="Cloud Bill Estimator: Compare 7 Cloud Providers">
+<meta name="twitter:description" content="What does your app cost on AWS, GCP, Azure, Vercel, Railway, Render, and usectl? Honest comparison, side by side, no signup.">
+<meta name="twitter:image" content="https://usectl.com/tools/cloud-bill-estimator/og.png">
+
+<!-- structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Cloud Bill Estimator",
+  "description": "Free calculator that estimates monthly cloud hosting costs across AWS, GCP, Azure, Vercel, Railway, Render, and usectl based on your app's compute, bandwidth, database, storage, addons, and team size.",
+  "url": "https://usectl.com/tools/cloud-bill-estimator",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Web",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "creator": {
+    "@type": "Organization",
+    "name": "usectl",
+    "url": "https://usectl.com"
+  },
+  "featureList": [
+    "Compare pricing across 7 cloud providers",
+    "Real 2026 published rates",
+    "AWS, GCP, Azure, Vercel, Railway, Render, usectl",
+    "No signup required",
+    "Free forever"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "usectl", "item": "https://usectl.com"},
+    {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://usectl.com/tools"},
+    {"@type": "ListItem", "position": 3, "name": "Cloud Bill Estimator", "item": "https://usectl.com/tools/cloud-bill-estimator"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How does the cloud bill estimator work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Pick your app's compute size, bandwidth, database needs, addons, and team seats. The tool estimates your monthly bill on seven cloud providers (AWS, GCP, Azure, Vercel, Railway, Render, usectl) using published 2026 pricing."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are the prices accurate?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Estimates are based on published list prices for each provider as of May 2026. Real bills depend on usage patterns, region, and configuration. The tool is conservative on hyperscaler costs because production AWS / GCP / Azure bills typically include additional fees like NAT gateway, multi-AZ databases, monitoring, and support plans."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why is usectl cheaper than AWS and Vercel?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "usectl uses flat per-resource pricing: $10 per vCPU per month and $5 per GB RAM per month. Addons (postgres, redis, mongo, nats), team seats, bandwidth, SSL, and DNS are included. Other providers meter each resource separately, which adds up fast at scale."
+      }
+    }
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0a0a0a;
+  --bg-card: #111111;
+  --bg-elevated: #161616;
+  --text: #fafafa;
+  --text-dim: #8a8a8a;
+  --text-faint: #4a4a4a;
+  --text-mute: #2a2a2a;
+  --accent: #11A32A;
+  --accent-soft: rgba(17, 163, 42, 0.13);
+  --accent-glow: rgba(17, 163, 42, 0.28);
+  --border: #1d1d1d;
+  --border-strong: #2a2a2a;
+  --green: #6ee7b7;
+  --red: #f87171;
+  --yellow: #fbbf24;
+
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-feature-settings: "ss01", "ss02", "cv11";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100%;
+}
+
+body {
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(17, 163, 42, 0.06), transparent 60%),
+    radial-gradient(ellipse 60% 40% at 90% 110%, rgba(17, 163, 42, 0.04), transparent 60%);
+  padding: 0 24px;
+}
+
+.container { max-width: 1440px; margin: 0 auto; padding: 32px 32px 80px; }
+
+/* header */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0 48px;
+}
+.brand {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+}
+.brand .mark {
+  color: var(--accent);
+  letter-spacing: -0.05em;
+  margin-right: 4px;
+}
+.nav-right {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-dim);
+  letter-spacing: 0.02em;
+}
+.nav-right .accent { color: var(--accent); }
+
+/* hero */
+.hero {
+  text-align: left;
+  margin-bottom: 48px;
+}
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+.h1 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(36px, 5vw, 64px);
+  letter-spacing: -0.035em;
+  line-height: 1.0;
+  color: var(--text);
+  margin-bottom: 16px;
+}
+.h1 .accent { color: var(--accent); }
+.sub {
+  font-size: clamp(15px, 1.4vw, 18px);
+  color: var(--text-dim);
+  line-height: 1.5;
+  max-width: 60ch;
+}
+
+/* layout */
+.grid {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+/* form panel */
+.form-panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 28px;
+  position: sticky;
+  top: 24px;
+}
+.form-title {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-faint);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+.field { margin-bottom: 24px; }
+.field:last-child { margin-bottom: 0; }
+.field-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 8px;
+}
+.label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+}
+.value {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+.hint {
+  font-size: 11px;
+  color: var(--text-faint);
+  margin-top: 6px;
+  line-height: 1.4;
+}
+
+/* slider */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 4px;
+  background: var(--border-strong);
+  border-radius: 2px;
+  outline: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: var(--accent);
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid var(--bg-card);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+input[type="range"]::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: var(--accent);
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid var(--bg-card);
+}
+
+/* select pill group */
+.pill-group {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.pill {
+  padding: 8px 12px;
+  border: 1px solid var(--border-strong);
+  border-radius: 6px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-dim);
+  background: transparent;
+  cursor: pointer;
+  transition: all 150ms;
+  flex: 1;
+  text-align: center;
+}
+.pill:hover {
+  border-color: var(--text-dim);
+  color: var(--text);
+}
+.pill.active {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* checkbox group */
+.checks {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+.check {
+  display: flex;
+  align-items: center;
+  padding: 10px 12px;
+  border: 1px solid var(--border-strong);
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-dim);
+  transition: all 150ms;
+  user-select: none;
+}
+.check:hover {
+  border-color: var(--text-dim);
+  color: var(--text);
+}
+.check.active {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.check::before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border: 1px solid var(--text-faint);
+  border-radius: 2px;
+  margin-right: 8px;
+  flex-shrink: 0;
+}
+.check.active::before {
+  background: var(--accent);
+  border-color: var(--accent);
+  box-shadow: inset 0 0 0 2px var(--bg-card);
+}
+
+/* results panel */
+.results {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.result-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-strong);
+  border-radius: 10px;
+  padding: 24px 28px;
+  display: grid;
+  grid-template-columns: 100px 1fr auto;
+  gap: 24px;
+  align-items: center;
+  transition: border-color 200ms;
+  position: relative;
+  overflow: hidden;
+}
+
+.result-card.winner {
+  border-color: var(--accent);
+  background: linear-gradient(90deg, var(--accent-soft) 0%, transparent 60%);
+}
+.result-card.winner::before {
+  content: "lowest";
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  padding: 3px 8px;
+  border: 1px solid var(--accent);
+  border-radius: 3px;
+}
+
+.provider {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--text);
+  letter-spacing: -0.01em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.provider .logo {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.provider .name-block {
+  display: flex;
+  flex-direction: column;
+}
+.provider .meta {
+  display: block;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 11px;
+  color: var(--text-faint);
+  letter-spacing: 0;
+  margin-top: 4px;
+}
+
+.breakdown {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-dim);
+  line-height: 1.7;
+}
+.breakdown .row { display: flex; justify-content: space-between; gap: 24px; }
+.breakdown .row .k { color: var(--text-faint); }
+.breakdown .row .v { color: var(--text-dim); font-variant-numeric: tabular-nums; }
+.breakdown .row.total {
+  color: var(--text);
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+  font-weight: 600;
+}
+
+.price {
+  font-family: var(--font-mono);
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  white-space: nowrap;
+}
+.price .unit {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-dim);
+  letter-spacing: 0;
+}
+.price.accent { color: var(--accent); }
+
+/* savings card */
+.savings {
+  margin-top: 32px;
+  padding: 24px 28px;
+  border-radius: 10px;
+  background: var(--accent-soft);
+  border: 1px solid var(--accent);
+  font-family: var(--font-display);
+  text-align: center;
+}
+.savings .num {
+  font-family: var(--font-mono);
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: -0.035em;
+  line-height: 1;
+  margin-bottom: 8px;
+  font-variant-numeric: tabular-nums;
+}
+.savings .label {
+  font-size: 13px;
+  color: var(--text-dim);
+  line-height: 1.4;
+}
+.savings .label .em { color: var(--text); font-weight: 500; }
+.savings.flat { background: var(--bg-card); border-color: var(--border-strong); }
+.savings.flat .num { color: var(--yellow); }
+
+/* SEO content section */
+.seo-content {
+  margin-top: 72px;
+  padding-top: 56px;
+  border-top: 1px solid var(--border);
+  max-width: 880px;
+}
+.seo-content h2 {
+  font-family: var(--font-display);
+  font-size: clamp(24px, 2.6vw, 32px);
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  margin-bottom: 20px;
+}
+.seo-content h3 {
+  font-family: var(--font-display);
+  font-size: clamp(18px, 1.8vw, 22px);
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: -0.02em;
+  margin-top: 40px;
+  margin-bottom: 14px;
+}
+.seo-content p {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--text-dim);
+  margin-bottom: 16px;
+}
+.seo-content p strong {
+  color: var(--text);
+  font-weight: 600;
+}
+.seo-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0 24px 0;
+}
+.seo-content li {
+  font-size: 14px;
+  color: var(--text-dim);
+  line-height: 1.6;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+.seo-content li strong {
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  margin-right: 8px;
+}
+.seo-content details {
+  border-bottom: 1px solid var(--border);
+  padding: 14px 0;
+}
+.seo-content details:last-child { border-bottom: none; }
+.seo-content summary {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text);
+  cursor: pointer;
+  padding: 4px 0;
+  user-select: none;
+}
+.seo-content summary::marker { color: var(--accent); }
+.seo-content details p {
+  font-size: 14px;
+  color: var(--text-dim);
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+.seo-content details a {
+  color: var(--accent);
+  text-decoration: none;
+}
+.seo-content details a:hover { text-decoration: underline; }
+
+/* footer */
+.footer {
+  margin-top: 64px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-faint);
+  letter-spacing: 0.02em;
+}
+.footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+.footer a:hover { text-decoration: underline; }
+
+.share {
+  margin-top: 24px;
+  padding: 16px 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-dim);
+  text-align: center;
+}
+.share button {
+  background: var(--accent);
+  color: var(--bg);
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 12px;
+  cursor: pointer;
+  margin-left: 12px;
+}
+.share button:hover { background: #0f8b25; }
+
+/* responsive */
+@media (max-width: 880px) {
+  .grid { grid-template-columns: 1fr; }
+  .form-panel { position: static; }
+  .result-card {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .price { text-align: left; font-size: 32px; }
+  .result-card.winner::before { top: 12px; right: 12px; }
+}
+
+@media (max-width: 480px) {
+  body { padding: 0 16px; }
+  .checks { grid-template-columns: 1fr; }
+  .pill-group { flex-direction: column; }
+}
+
+.disclaimer {
+  margin-top: 32px;
+  padding: 16px 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-faint);
+  line-height: 1.6;
+}
+.disclaimer strong { color: var(--text-dim); font-weight: 600; }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- nav -->
+  <nav class="nav">
+    <a href="https://usectl.com" class="brand"><span class="mark">~*</span>usectl</a>
+    <div class="nav-right">tools <span class="accent">/</span> cloud bill estimator</div>
+  </nav>
+
+  <!-- hero -->
+  <header class="hero">
+    <div class="eyebrow">free tool · no signup</div>
+    <h1 class="h1">how much does your <span class="accent">cloud cost?</span></h1>
+    <p class="sub">pick a few options below. see what you'd pay on aws, google cloud, azure, vercel, railway, render, and usectl.</p>
+  </header>
+
+  <!-- grid -->
+  <div class="grid">
+
+    <!-- form -->
+    <aside class="form-panel">
+      <div class="form-title">your project</div>
+
+      <!-- app type -->
+      <div class="field">
+        <div class="field-label">
+          <span class="label">app type</span>
+        </div>
+        <div class="pill-group" id="appType">
+          <button class="pill" data-value="static">static</button>
+          <button class="pill active" data-value="webapp">web app</button>
+          <button class="pill" data-value="api">api</button>
+          <button class="pill" data-value="fullstack">full stack</button>
+        </div>
+      </div>
+
+      <!-- compute -->
+      <div class="field">
+        <div class="field-label">
+          <span class="label">compute size</span>
+          <span class="value" id="computeLabel">medium</span>
+        </div>
+        <div class="pill-group" id="compute">
+          <button class="pill" data-value="small">small</button>
+          <button class="pill active" data-value="medium">medium</button>
+          <button class="pill" data-value="large">large</button>
+          <button class="pill" data-value="enterprise">enterprise</button>
+        </div>
+        <div class="hint">small: 1 vCPU / 2GB · medium: 2 vCPU / 4GB · large: 4 vCPU / 16GB · enterprise: 8 vCPU / 24GB</div>
+      </div>
+
+      <!-- bandwidth -->
+      <div class="field">
+        <div class="field-label">
+          <span class="label">bandwidth / month</span>
+          <span class="value" id="bandwidthLabel">500 GB</span>
+        </div>
+        <input type="range" id="bandwidth" min="10" max="5000" value="500" step="10">
+        <div class="hint">total data served to users. video / images / api responses</div>
+      </div>
+
+      <!-- db -->
+      <div class="field">
+        <div class="field-label">
+          <span class="label">database size</span>
+          <span class="value" id="dbLabel">10 GB</span>
+        </div>
+        <input type="range" id="db" min="0" max="500" value="10" step="1">
+        <div class="hint">postgres / mongo / sql storage. 0 if you don't need a db</div>
+      </div>
+
+      <!-- storage -->
+      <div class="field">
+        <div class="field-label">
+          <span class="label">object storage (s3)</span>
+          <span class="value" id="storageLabel">20 GB</span>
+        </div>
+        <input type="range" id="storage" min="0" max="2000" value="20" step="10">
+        <div class="hint">user uploads, media, backups</div>
+      </div>
+
+      <!-- addons -->
+      <div class="field">
+        <div class="field-label">
+          <span class="label">need addons?</span>
+        </div>
+        <div class="checks" id="addons">
+          <button class="check" data-value="postgres">postgres</button>
+          <button class="check" data-value="redis">redis</button>
+          <button class="check" data-value="mongo">mongo</button>
+          <button class="check" data-value="nats">nats</button>
+        </div>
+      </div>
+
+      <!-- team -->
+      <div class="field">
+        <div class="field-label">
+          <span class="label">team seats</span>
+          <span class="value" id="seatsLabel">2</span>
+        </div>
+        <input type="range" id="seats" min="1" max="20" value="2" step="1">
+        <div class="hint">how many devs work on this</div>
+      </div>
+
+    </aside>
+
+    <!-- results -->
+    <section>
+      <div class="results" id="results"></div>
+
+      <div class="savings" id="savingsCard" style="display:none;"></div>
+
+      <div class="share" id="shareCard">
+        cloud pricing comparison: <strong>7 providers, side by side.</strong>
+        <button onclick="shareResult()">share on x</button>
+      </div>
+
+      <div class="disclaimer">
+        <strong>this compares paid commercial plans</strong> (vercel pro, railway pro, render pro, usectl). all three competitors have free tiers for personal/hobby use that aren't shown here. vercel hobby is free but non-commercial. railway has $5 hobby. render has a free tier with cold starts. usectl has no free tier and starts at $40/mo.
+        <br><br>
+        <strong>numbers based on published pricing</strong> as of may 2026 (vercel.com/pricing, railway.com/pricing, render.com/pricing). usectl pricing is flat per machine with addons, seats, bandwidth, ssl, and dns included. compute usage on vercel is estimated from typical app patterns. <strong>this is an estimate, not a quote.</strong>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- SEO content -->
+  <section class="seo-content">
+    <h2>compare cloud hosting prices in one place</h2>
+    <p>
+      cloud pricing is complicated. <strong>aws, google cloud, and azure</strong> meter every byte of bandwidth, every function invocation, every database iops. <strong>vercel, railway, and render</strong> are platforms that resell hyperscaler infrastructure with their own markup layered on top. <strong>usectl</strong> runs on bare metal we operate, so we charge flat: $10 per vcpu, $5 per gb ram, everything else included.
+    </p>
+    <p>
+      this calculator shows you the real difference. pick your compute size, bandwidth, database, storage, and team. see what you'd pay on each provider. no signup. no email capture. just numbers.
+    </p>
+
+    <h3>which cloud is cheapest?</h3>
+    <p>
+      it depends on what you run. <strong>static sites and tiny personal apps</strong>: vercel hobby, render free, and cloudflare pages all cost $0 (non-commercial). for <strong>production apps with a database and bandwidth</strong>, usectl is usually cheapest because the flat per-resource pricing skips the per-second meter incumbents are locked into. for <strong>enterprise workloads with 8+ vcpu and high egress</strong>, the gap widens dramatically: aws and azure run $500-1500/month, render hits $800+, while usectl stays in the $200 range.
+    </p>
+
+    <h3>compared providers</h3>
+    <ul>
+      <li><strong>aws</strong>: ec2 on-demand pricing, us-east-1. rds postgres, elasticache redis, s3 storage, alb, route 53.</li>
+      <li><strong>google cloud</strong>: compute engine, us-central1. cloud sql, memorystore, cloud storage, load balancer.</li>
+      <li><strong>azure</strong>: virtual machines, east us. azure database for postgres flexible server, cache for redis, blob storage, app gateway.</li>
+      <li><strong>vercel</strong>: pro plan with $20 included credit. fluid compute, bandwidth overage at $0.15/gb past 1tb.</li>
+      <li><strong>railway</strong>: pro plan with $20 included credit. $20/vcpu + $10/gb ram + $0.05/gb egress.</li>
+      <li><strong>render</strong>: pro workspace ($25/month) + per-service compute. bandwidth at $0.15/gb past 25gb.</li>
+      <li><strong>usectl</strong>: flat tier, $10/vcpu + $5/gb ram. addons, seats, bandwidth, ssl, and dns included.</li>
+    </ul>
+
+    <h3>faq</h3>
+    <details>
+      <summary>how accurate are the prices?</summary>
+      <p>estimates are based on published list prices as of may 2026 for each provider. real bills depend on region, usage patterns, and configuration. the tool is intentionally conservative on hyperscaler costs because production aws / google cloud / azure bills typically include extras like nat gateway (~$32/mo), multi-az databases (2x base cost), cloudwatch (~$10-50/mo), and support plans ($29-100/mo minimum).</p>
+    </details>
+    <details>
+      <summary>does this include free tiers?</summary>
+      <p>no. this comparison uses paid commercial plans (vercel pro, railway pro, render pro, usectl). all competitors have free tiers for personal/hobby use: vercel hobby (free, non-commercial), railway hobby ($5/month minimum), render free (with cold starts). usectl has no free tier and starts at $20/month for a small machine.</p>
+    </details>
+    <details>
+      <summary>why is usectl cheaper?</summary>
+      <p>usectl uses flat per-resource pricing on bare metal we operate ourselves. $10 per vcpu per month and $5 per gb ram per month. managed addons (postgres, redis, mongo, nats), team seats, bandwidth, ssl, and dns are included. other providers meter each resource separately because their underlying economics force them to.</p>
+    </details>
+    <details>
+      <summary>can i deploy real apps on usectl today?</summary>
+      <p>yes. usectl is live and running production workloads. push a github repo, the platform builds it with kaniko, deploys it on kubernetes (k3s) running on hetzner bare metal, gives you a live url with auto-issued ssl. cli, mcp server, and dashboard all available. <a href="https://usectl.com">try it at usectl.com</a>.</p>
+    </details>
+  </section>
+
+  <!-- footer -->
+  <footer class="footer">
+    <div>built by <a href="https://usectl.com"><span style="color: var(--accent); letter-spacing: -0.05em;">~*</span>usectl</a>. agents do the work. builders get the time.</div>
+    <div><a href="https://usectl.com">usectl.com</a></div>
+  </footer>
+
+</div>
+
+<script>
+// ============================================================
+// state
+// ============================================================
+const state = {
+  appType: 'webapp',
+  compute: 'medium',
+  bandwidth: 500,
+  db: 10,
+  storage: 20,
+  addons: new Set(),
+  seats: 2,
+};
+
+// ============================================================
+// pricing models (2026 estimates)
+// ============================================================
+const COMPUTE_SPECS = {
+  small:      { vcpu: 1, ram: 2 },
+  medium:     { vcpu: 2, ram: 4 },
+  large:      { vcpu: 4, ram: 16 },
+  enterprise: { vcpu: 8, ram: 24 },
+};
+
+// vercel pro (2026, verified from vercel.com/pricing)
+function priceVercel(s) {
+  const specs = COMPUTE_SPECS[s.compute];
+  // base: $20/mo includes 1 dev seat + $20 usage credit
+  const base = 20;
+  // additional dev seats: $20/seat
+  const additionalSeats = Math.max(0, s.seats - 1) * 20;
+
+  // bandwidth (fast data transfer): 1TB included on pro, then $0.15/GB
+  const bwOverage = Math.max(0, s.bandwidth - 1000);
+  const bwCost = bwOverage * 0.15;
+
+  // compute (fluid/functions): only meaningful for non-static apps
+  // active CPU: 4 hrs included, then $0.128/hr
+  // provisioned memory: 360 GB-hrs included, then $0.0106/GB-hr
+  // invocations: 1M included, then $0.60/1M
+  let computeRaw = 0;
+  if (s.appType !== 'static') {
+    const cpuActiveHrs = { small: 20, medium: 60, large: 200, enterprise: 500 }[s.compute];
+    const memGBHrs = specs.ram * 720; // full month
+    const invocationsM = { small: 1.5, medium: 5, large: 20, enterprise: 50 }[s.compute];
+    const cpuCost = Math.max(0, cpuActiveHrs - 4) * 0.128;
+    const memCost = Math.max(0, memGBHrs - 360) * 0.0106;
+    const invCost = Math.max(0, invocationsM - 1) * 0.60;
+    computeRaw = cpuCost + memCost + invCost;
+  }
+
+  // postgres: via marketplace (e.g. neon partner), ~$25/mo for small
+  let dbCost = 0;
+  if (s.addons.has('postgres')) dbCost += Math.max(25, s.db * 2);
+  if (s.addons.has('mongo')) dbCost += Math.max(35, s.db * 2.5);
+
+  // redis (kv) and nats - kv via marketplace
+  const redisCost = s.addons.has('redis') ? 15 : 0;
+  const natsCost = s.addons.has('nats') ? 30 : 0;
+
+  // blob storage: $0.023/GB-month
+  const storageCost = s.storage * 0.023;
+
+  // included $20 usage credit applies to usage (compute + bw + storage)
+  const usageBeforeCredit = computeRaw + bwCost + redisCost + natsCost + storageCost;
+  const credit = Math.min(20, usageBeforeCredit);
+  const usageAfterCredit = usageBeforeCredit - credit;
+
+  return {
+    'pro base + 1 seat': base,
+    'additional seats': additionalSeats,
+    'compute (functions)': Math.round(computeRaw),
+    'bandwidth': Math.round(bwCost),
+    'database (marketplace)': Math.round(dbCost),
+    'redis / nats (marketplace)': Math.round(redisCost + natsCost),
+    'storage (blob)': Math.round(storageCost),
+    'less $20 included credit': -Math.round(credit),
+    total: Math.round(base + additionalSeats + usageAfterCredit + dbCost),
+  };
+}
+
+// railway pro (2026, verified from railway.com/pricing)
+function priceRailway(s) {
+  const specs = COMPUTE_SPECS[s.compute];
+  // pro base: $20/mo + $20 included usage credit, unlimited seats
+  const base = 20;
+
+  // compute: $20/vCPU-month + $10/GB RAM-month
+  const compute = specs.vcpu * 20 + specs.ram * 10;
+
+  // egress: $0.05/GB
+  const bwCost = s.bandwidth * 0.05;
+
+  // postgres / mongo as separate railway services
+  let dbCost = 0;
+  if (s.addons.has('postgres')) dbCost += 15 + (s.db * 0.16); // small pg service + volume
+  if (s.addons.has('mongo')) dbCost += 18 + (s.db * 0.16);
+
+  // redis service
+  const redisCost = s.addons.has('redis') ? 10 : 0;
+  // nats service
+  const natsCost = s.addons.has('nats') ? 10 : 0;
+
+  // object storage: $0.015/GB-month
+  const storageCost = s.storage * 0.015;
+
+  // included $20 credit covers any usage
+  const usageBeforeCredit = compute + bwCost + dbCost + redisCost + natsCost + storageCost;
+  const credit = Math.min(20, usageBeforeCredit);
+  const usageAfterCredit = usageBeforeCredit - credit;
+
+  return {
+    'pro base': base,
+    'team seats': 0,
+    'compute ($20/vCPU + $10/GB RAM)': Math.round(compute),
+    'egress (bandwidth)': Math.round(bwCost),
+    'database services': Math.round(dbCost),
+    'redis / nats': Math.round(redisCost + natsCost),
+    'object storage': Math.round(storageCost),
+    'less $20 included credit': -Math.round(credit),
+    total: Math.round(base + usageAfterCredit),
+  };
+}
+
+// render pro (2026, verified from render.com/pricing)
+function priceRender(s) {
+  const specs = COMPUTE_SPECS[s.compute];
+  // pro workspace: $25/mo (waived if no activity, but we count it)
+  const workspace = 25;
+  // unlimited seats on pro
+  const seats = 0;
+
+  // web service compute tier (static sites are free on render)
+  // verified against render.com/pricing
+  let computeTier;
+  if (s.appType === 'static') {
+    computeTier = 0; // static sites free on render pro
+  } else {
+    computeTier = {
+      small:      25,   // standard: 1 cpu, 2GB
+      medium:     85,   // pro: 2 cpu, 4GB
+      large:      225,  // pro max: 4 cpu, 16GB
+      enterprise: 450,  // pro ultra: 8 cpu, 32GB
+    }[s.compute];
+  }
+
+  // bandwidth: 25GB included on pro, then $0.15/GB
+  const bwOverage = Math.max(0, s.bandwidth - 25);
+  const bwCost = bwOverage * 0.15;
+
+  // postgres tiers (basic-256mb $6, basic-1gb $19, basic-4gb $75)
+  let dbCost = 0;
+  if (s.addons.has('postgres')) {
+    if (s.db <= 1) dbCost += 6;
+    else if (s.db <= 4) dbCost += 19;
+    else if (s.db <= 20) dbCost += 19 + (s.db - 1) * 0.30; // expandable storage
+    else dbCost += 75 + Math.max(0, s.db - 4) * 0.30;
+  }
+  if (s.addons.has('mongo')) dbCost += 25; // would need self-host or 3rd party
+
+  // key-value (redis) tiers: starter $10, standard $32
+  const redisCost = s.addons.has('redis') ? (s.compute === 'large' ? 32 : 10) : 0;
+  // nats: self-host on a render service ~$25
+  const natsCost = s.addons.has('nats') ? 25 : 0;
+
+  // disk: $0.25/GB-month
+  const storageCost = s.storage * 0.25;
+
+  return {
+    'pro workspace': workspace,
+    'team seats': seats,
+    'web service compute': computeTier,
+    'bandwidth': Math.round(bwCost),
+    'database': Math.round(dbCost),
+    'redis / nats': Math.round(redisCost + natsCost),
+    'disk storage': Math.round(storageCost),
+    total: workspace + seats + computeTier + Math.round(bwCost) + Math.round(dbCost) + Math.round(redisCost + natsCost) + Math.round(storageCost),
+  };
+}
+
+// usectl pricing: $10/vCPU + $5/GB RAM, addons + seats + bandwidth + ssl included
+function priceUsectl(s) {
+  const specs = COMPUTE_SPECS[s.compute];
+  const computeCost = specs.vcpu * 10 + specs.ram * 5;
+  return {
+    'vcpu ($10 each)': specs.vcpu * 10,
+    'ram ($5 / GB)': specs.ram * 5,
+    'team seats': 0,
+    'bandwidth': 0,
+    'addons (postgres, redis, mongo, nats)': 0,
+    'storage (s3)': 0,
+    'ssl, dns, support': 0,
+    total: computeCost,
+  };
+}
+
+// aws pricing (2026, on-demand, us-east-1)
+function priceAWS(s) {
+  const specs = COMPUTE_SPECS[s.compute];
+  // ec2 t3 / m6i on-demand pricing in us-east-1 (verified list prices)
+  const ec2 = {
+    small:      15.18,  // t3.small: 2 vCPU, 2GB
+    medium:     30.36,  // t3.medium: 2 vCPU, 4GB
+    large:      140,    // m6i.xlarge: 4 vCPU + 16GB
+    enterprise: 280,    // m6i.2xlarge: 8 vCPU + 32GB (closest to 24GB)
+  }[s.compute];
+  // bandwidth egress: 100GB free, then $0.09/GB
+  const bwOverage = Math.max(0, s.bandwidth - 100);
+  const bwCost = bwOverage * 0.09;
+  // rds postgres: db.t3.micro ~$15, db.t3.small ~$30, scales with storage
+  let dbCost = 0;
+  if (s.addons.has('postgres')) dbCost += 15 + s.db * 0.115; // gp2 storage
+  if (s.addons.has('mongo')) dbCost += 80; // documentdb t3.medium ~$80
+  // elasticache redis: ~$15-30 for small
+  const redisCost = s.addons.has('redis') ? 15 : 0;
+  // amazon mq for nats-style: ~$25
+  const natsCost = s.addons.has('nats') ? 25 : 0;
+  // s3: $0.023/GB-month
+  const storageCost = s.storage * 0.023;
+  // route 53 + alb if non-static
+  const dnsCost = 0.50;
+  const lbCost = s.appType !== 'static' ? 18 : 0;
+  // iam, vpc, basic essentials: ~$5 misc
+  const misc = 5;
+  return {
+    'ec2 instance': ec2,
+    'bandwidth (egress)': Math.round(bwCost),
+    'rds / docdb': Math.round(dbCost),
+    'elasticache / mq': Math.round(redisCost + natsCost),
+    's3 storage': Math.round(storageCost),
+    'alb + route 53': Math.round(lbCost + dnsCost),
+    'misc (vpc, iam, etc)': misc,
+    total: Math.round(ec2 + bwCost + dbCost + redisCost + natsCost + storageCost + lbCost + dnsCost + misc),
+  };
+}
+
+// gcp pricing (2026, on-demand, us-central1)
+function priceGCP(s) {
+  const specs = COMPUTE_SPECS[s.compute];
+  // compute engine e2 / n2 in us-central1
+  const compute = {
+    small:      25,   // e2-medium: 1 vCPU + 4GB (closest to 1 vCPU + 2GB)
+    medium:     50,   // e2-standard-2: 2 vCPU + 8GB (closest to 2 vCPU + 4GB)
+    large:      170,  // n2-highmem-4: 4 vCPU + 32GB or e2-highmem-4 for 4+32
+    enterprise: 250,  // e2-standard-8: 8 vCPU + 32GB
+  }[s.compute];
+  // bandwidth egress: $0.12/GB (first 1GB free)
+  const bwCost = Math.max(0, s.bandwidth - 1) * 0.12;
+  // cloud sql postgres: db-f1-micro ~$15, scales with storage
+  let dbCost = 0;
+  if (s.addons.has('postgres')) dbCost += 15 + s.db * 0.17;
+  if (s.addons.has('mongo')) dbCost += 60; // mongo atlas via marketplace
+  // memorystore redis: ~$25 basic
+  const redisCost = s.addons.has('redis') ? 25 : 0;
+  // pub/sub for nats-style: ~$10
+  const natsCost = s.addons.has('nats') ? 10 : 0;
+  // cloud storage: $0.02/GB-month
+  const storageCost = s.storage * 0.02;
+  // load balancer
+  const lbCost = s.appType !== 'static' ? 18 : 0;
+  // dns + misc
+  const misc = 5;
+  return {
+    'compute engine': compute,
+    'egress bandwidth': Math.round(bwCost),
+    'cloud sql / mongo': Math.round(dbCost),
+    'memorystore / pubsub': Math.round(redisCost + natsCost),
+    'cloud storage': Math.round(storageCost),
+    'load balancer + dns': Math.round(lbCost + 5),
+    'misc (vpc, ops)': misc,
+    total: Math.round(compute + bwCost + dbCost + redisCost + natsCost + storageCost + lbCost + 5 + misc),
+  };
+}
+
+// azure pricing (2026, on-demand, east us)
+function priceAzure(s) {
+  const specs = COMPUTE_SPECS[s.compute];
+  // azure vm B-series / D-series in east us
+  const vm = {
+    small:      15,   // B1ms: 1 vCPU + 2GB
+    medium:     30,   // B2s: 2 vCPU + 4GB
+    large:      140,  // B4ms: 4 vCPU + 16GB
+    enterprise: 280,  // D8s_v3: 8 vCPU + 32GB
+  }[s.compute];
+  // bandwidth: 100GB free, then $0.087/GB
+  const bwOverage = Math.max(0, s.bandwidth - 100);
+  const bwCost = bwOverage * 0.087;
+  // azure postgres flexible server B1ms ~$25, scales
+  let dbCost = 0;
+  if (s.addons.has('postgres')) dbCost += 25 + s.db * 0.10;
+  if (s.addons.has('mongo')) dbCost += 70; // cosmos db
+  // azure cache for redis: ~$20 basic
+  const redisCost = s.addons.has('redis') ? 20 : 0;
+  // service bus for nats-style: ~$10
+  const natsCost = s.addons.has('nats') ? 10 : 0;
+  // blob storage: ~$0.018/GB-month
+  const storageCost = s.storage * 0.018;
+  // app gateway / load balancer
+  const lbCost = s.appType !== 'static' ? 22 : 0;
+  // misc
+  const misc = 5;
+  return {
+    'virtual machine': vm,
+    'bandwidth egress': Math.round(bwCost),
+    'postgres / cosmos db': Math.round(dbCost),
+    'cache / service bus': Math.round(redisCost + natsCost),
+    'blob storage': Math.round(storageCost),
+    'load balancer + dns': Math.round(lbCost + 1),
+    'misc (vnet, ops)': misc,
+    total: Math.round(vm + bwCost + dbCost + redisCost + natsCost + storageCost + lbCost + 1 + misc),
+  };
+}
+
+// ============================================================
+// render
+// ============================================================
+function fmt(n) {
+  return '$' + n.toLocaleString('en-US');
+}
+
+const LOGOS = {
+  aws:     '<svg viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg"><rect width="28" height="28" rx="5" fill="#FF9900"/><text x="14" y="18" font-family="Inter, sans-serif" font-size="9" font-weight="800" fill="#232F3E" text-anchor="middle">AWS</text></svg>',
+  'google cloud': '<svg viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg"><rect width="28" height="28" rx="5" fill="#fff"/><circle cx="10" cy="10" r="3.5" fill="#4285F4"/><circle cx="18" cy="10" r="3.5" fill="#EA4335"/><circle cx="10" cy="18" r="3.5" fill="#FBBC04"/><circle cx="18" cy="18" r="3.5" fill="#34A853"/></svg>',
+  azure:   '<svg viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg"><rect width="28" height="28" rx="5" fill="#0078D4"/><text x="14" y="19" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="white" text-anchor="middle">Az</text></svg>',
+  vercel:  '<svg viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg"><rect width="28" height="28" rx="5" fill="#0a0a0a"/><polygon points="14,7 22,21 6,21" fill="#fafafa"/></svg>',
+  railway: '<svg viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg"><rect width="28" height="28" rx="5" fill="#0B0D0E"/><text x="14" y="19" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="white" text-anchor="middle">R</text></svg>',
+  render:  '<svg viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg"><rect width="28" height="28" rx="5" fill="#46E3B7"/><text x="14" y="19" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#0E0E10" text-anchor="middle">R</text></svg>',
+  usectl:  '<svg viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg"><rect width="28" height="28" rx="5" fill="#11A32A"/><text x="14" y="19" font-family="JetBrains Mono, monospace" font-size="11" font-weight="800" fill="white" text-anchor="middle">~*</text></svg>',
+};
+
+function renderResults() {
+  const results = [
+    { name: 'aws',     meta: 'on-demand ec2, us-east-1',    ...priceAWS(state) },
+    { name: 'google cloud', meta: 'compute engine, us-central1', ...priceGCP(state) },
+    { name: 'azure',   meta: 'b-series vm, east us',        ...priceAzure(state) },
+    { name: 'vercel',  meta: 'pro plan, metered',           ...priceVercel(state) },
+    { name: 'railway', meta: 'pro plan, usage-based',       ...priceRailway(state) },
+    { name: 'render',  meta: 'pro workspace, per-resource', ...priceRender(state) },
+    { name: 'usectl',  meta: 'flat: $10/vCPU + $5/GB RAM',  ...priceUsectl(state) },
+  ];
+
+  const minTotal = Math.min(...results.map(r => r.total));
+
+  const container = document.getElementById('results');
+  container.innerHTML = results.map(r => {
+    const isWinner = r.total === minTotal;
+    const winnerClass = isWinner ? 'winner' : '';
+
+    const breakdown = Object.entries(r)
+      .filter(([k]) => !['name','meta','total'].includes(k))
+      .filter(([k, v]) => v !== 0)
+      .map(([k, v]) => `<div class="row"><span class="k">${k}</span><span class="v">${v < 0 ? '-' : ''}${fmt(Math.abs(v))}</span></div>`)
+      .join('');
+
+    return `
+      <div class="result-card ${winnerClass}">
+        <div class="provider">
+          <span class="logo">${LOGOS[r.name] || ''}</span>
+          <span class="name-block">${r.name}<span class="meta">${r.meta}</span></span>
+        </div>
+        <div class="breakdown">
+          ${breakdown}
+          <div class="row total"><span class="k">total</span><span class="v">${fmt(r.total)}/mo</span></div>
+        </div>
+        <div class="price">${fmt(r.total)}<span class="unit">/mo</span></div>
+      </div>
+    `;
+  }).join('');
+
+  // hide the savings card, keep the simple share card
+  const sav = document.getElementById('savingsCard');
+  if (sav) sav.style.display = 'none';
+}
+
+// ============================================================
+// event handlers
+// ============================================================
+function pillGroup(id, key) {
+  document.querySelectorAll(`#${id} .pill`).forEach(p => {
+    p.addEventListener('click', () => {
+      document.querySelectorAll(`#${id} .pill`).forEach(x => x.classList.remove('active'));
+      p.classList.add('active');
+      state[key] = p.dataset.value;
+      renderResults();
+      if (id === 'compute') document.getElementById('computeLabel').textContent = state.compute;
+    });
+  });
+}
+pillGroup('appType', 'appType');
+pillGroup('compute', 'compute');
+
+document.querySelectorAll('#addons .check').forEach(c => {
+  c.addEventListener('click', () => {
+    const v = c.dataset.value;
+    if (state.addons.has(v)) {
+      state.addons.delete(v);
+      c.classList.remove('active');
+    } else {
+      state.addons.add(v);
+      c.classList.add('active');
+    }
+    renderResults();
+  });
+});
+
+function sliderHandler(sliderId, labelId, stateKey, formatter) {
+  const slider = document.getElementById(sliderId);
+  const label = document.getElementById(labelId);
+  slider.addEventListener('input', () => {
+    state[stateKey] = parseInt(slider.value, 10);
+    label.textContent = formatter(state[stateKey]);
+    renderResults();
+  });
+}
+sliderHandler('bandwidth', 'bandwidthLabel', 'bandwidth', v => `${v} GB`);
+sliderHandler('db', 'dbLabel', 'db', v => `${v} GB`);
+sliderHandler('storage', 'storageLabel', 'storage', v => `${v} GB`);
+sliderHandler('seats', 'seatsLabel', 'seats', v => `${v}`);
+
+function shareResult() {
+  const text = `honest cloud pricing comparison. aws, google cloud, azure, vercel, railway, render, usectl. side by side, no signup. https://usectl.com/tools/cloud-bill`;
+  const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
+  window.open(url, '_blank');
+}
+
+// initial render
+renderResults();
+</script>
+
+</body>
+</html>
