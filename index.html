@@ -786,8 +786,8 @@ input[type="range"]::-moz-range-thumb {
       <div class="savings" id="savingsCard" style="display:none;"></div>
 
       <div class="share" id="shareCard">
-        cloud pricing comparison: <strong>7 providers, side by side.</strong>
-        <button onclick="shareResult()">share on x</button>
+        cloud pricing comparison: <strong>7 providers, side by side.</strong> Share your result →
+        <button onclick="shareResult()">Share on X</button>
       </div>
 
       <div class="disclaimer">
@@ -1272,8 +1272,37 @@ sliderHandler('storage', 'storageLabel', 'storage', v => `${v} GB`);
 sliderHandler('seats', 'seatsLabel', 'seats', v => `${v}`);
 
 function shareResult() {
-  const text = `honest cloud pricing comparison. aws, google cloud, azure, vercel, railway, render, usectl. side by side, no signup. https://cloud-bill-estimator.usectl.com`;
-  const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
+  const s = state;
+  const results = [
+    { name: 'aws', ...priceAWS(s) },
+    { name: 'google cloud', ...priceGCP(s) },
+    { name: 'azure', ...priceAzure(s) },
+    { name: 'vercel', ...priceVercel(s) },
+    { name: 'railway', ...priceRailway(s) },
+    { name: 'render', ...priceRender(s) },
+    { name: 'usectl', ...priceUsectl(s) },
+  ];
+
+  const usectl = results.find(r => r.name === 'usectl');
+  const others = results.filter(r => r.name !== 'usectl');
+  const cheapestOther = Math.min(...others.map(r => r.total));
+  const savings = cheapestOther - usectl.total;
+
+  const config = `${s.compute} + ${s.bandwidth}GB`;
+  const addons = Array.from(s.addons);
+  const addonStr = addons.length ? ` + ${addons.join('+')}` : '';
+  const seatsStr = s.seats > 1 ? ` + ${s.seats} seats` : '';
+
+  let text;
+  if (savings > 5) {
+    text = `${config}${addonStr}${seatsStr} → usectl $${usectl.total}/mo flat.\n\nCheapest other: $${cheapestOther}. Save $${savings}/mo.\n\nhttps://cloud-bill-estimator.usectl.com`;
+  } else if (savings > 0) {
+    text = `${config}${addonStr}${seatsStr} on usectl = $${usectl.total}/mo (flat, everything included).\n\nhttps://cloud-bill-estimator.usectl.com`;
+  } else {
+    text = `${config}${addonStr}${seatsStr} on usectl = $${usectl.total}/mo flat.\n\nhttps://cloud-bill-estimator.usectl.com`;
+  }
+
+  const url = `https://x.com/intent/tweet?text=${encodeURIComponent(text)}`;
   window.open(url, '_blank');
 }
 
